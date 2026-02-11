@@ -1,0 +1,8 @@
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\ExpenseTracker.Api.csproj.AssemblyReference.cache
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\ExpenseTracker.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\ExpenseTracker.Api.AssemblyInfoInputs.cache
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\ExpenseTracker.Api.AssemblyInfo.cs
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\ExpenseTracker.Api.csproj.CoreCompileInputs.cache
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\ExpenseTracker.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\pavlin\Desktop\expense-tracker\backend\ExpenseTracker\ExpenseTracker.Api\obj\Debug\net10.0\ExpenseTracker.Api.MvcApplicationPartsAssemblyInfo.cache

@@ -1,0 +1,325 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\services\\authenticationservice\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\services\\authenticationservice\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\controllers\\reportscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\controllers\\healthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\data\\entities\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\data\\entities\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\data\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\data\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\data\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\migrations\\20260125180044_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\migrations\\20260125180044_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\services\\authenticationservice\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\services\\authenticationservice\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\models\\loginmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\expensetracker.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\expensetracker.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|c:\\users\\pavlin\\desktop\\expense-tracker\\backend\\expensetracker\\expensetracker.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{59616DC2-7F89-DB74-2391-69CF542D3BFA}|ExpenseTracker.Api\\ExpenseTracker.Api.csproj|solutionrelative:expensetracker.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransactionsController.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\TransactionsController.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Controllers\\TransactionsController.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\TransactionsController.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Controllers\\TransactionsController.cs",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAUwAkBAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T18:40:43.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEBAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T18:01:19.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Data\\Entities\\Category.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\Entities\\Category.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Data\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:55:24.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\Entities\\Transaction.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Data\\Entities\\Transaction.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\Entities\\Transaction.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Data\\Entities\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:54:58.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T15:26:40.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Data\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Data\\Entities\\User.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Data\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:01:40.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Services\\AuthenticationService\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Services\\AuthenticationService\\AuthenticationService.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Services\\AuthenticationService\\AuthenticationService.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Services\\AuthenticationService\\AuthenticationService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAmwDcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:03:20.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:03:58.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20260125180044_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Migrations\\20260125180044_InitialCreate.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Migrations\\20260125180044_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Migrations\\20260125180044_InitialCreate.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Migrations\\20260125180044_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T18:01:24.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T18:39:35.852Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReportsController.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\ReportsController.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Controllers\\ReportsController.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\ReportsController.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Controllers\\ReportsController.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAQwHcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-26T19:00:56.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HealthController.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\HealthController.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Controllers\\HealthController.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Controllers\\HealthController.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Controllers\\HealthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T15:34:05.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Program.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Program.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Program.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAQwIYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-24T15:26:50.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Models\\LoginModel.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Models\\LoginModel.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Models\\LoginModel.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Models\\LoginModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:02:28.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IAuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Services\\AuthenticationService\\IAuthenticationService.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Services\\AuthenticationService\\IAuthenticationService.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Services\\AuthenticationService\\IAuthenticationService.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Services\\AuthenticationService\\IAuthenticationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:03:07.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RegisterModel.cs",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Models\\RegisterModel.cs",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Models\\RegisterModel.cs",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Models\\RegisterModel.cs",
+              "RelativeToolTip": "ExpenseTracker.Api\\Models\\RegisterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-25T17:02:15.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ExpenseTracker.Api.csproj",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\ExpenseTracker.Api.csproj",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\ExpenseTracker.Api.csproj",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\ExpenseTracker.Api.csproj",
+              "RelativeToolTip": "ExpenseTracker.Api\\ExpenseTracker.Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-25T17:06:25.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\Properties\\launchSettings.json",
+              "RelativeToolTip": "ExpenseTracker.Api\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwBgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-24T15:30:08.827Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "ExpenseTracker.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\pavlin\\Desktop\\expense-tracker\\backend\\ExpenseTracker\\ExpenseTracker.Api\\appsettings.json",
+              "RelativeToolTip": "ExpenseTracker.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-24T15:25:40.25Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
