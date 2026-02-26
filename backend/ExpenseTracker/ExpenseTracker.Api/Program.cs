@@ -14,13 +14,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 //
-// ? PRODUCTION CORS (VERY IMPORTANT)
+// ? CORS (Allow localhost + all Vercel deployments)
 //
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("vite", policy =>
     {
-        policy.SetIsOriginAllowed(origin =>
+        policy
+            .SetIsOriginAllowed(origin =>
                 origin.StartsWith("http://localhost") ||
                 origin.Contains("vercel.app"))
             .AllowAnyHeader()
@@ -29,7 +30,7 @@ builder.Services.AddCors(options =>
 });
 
 //
-// Database
+// ? Database (SQLite)
 //
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
@@ -37,11 +38,12 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 });
 
 //
-// Identity
+// ? Identity
 //
 builder.Services.AddIdentity<User, IdentityRole<Guid>>(opt =>
 {
     opt.Password.RequiredLength = 6;
+    opt.Password.RequireNonAlphanumeric = true;
     opt.User.RequireUniqueEmail = true;
 })
 .AddEntityFrameworkStores<AppDbContext>()
@@ -62,7 +64,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 //
-// JWT
+// ? JWT
 //
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
@@ -93,7 +95,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 //
-// Swagger
+// ? Swagger
 //
 builder.Services.AddSwaggerGen(c =>
 {
@@ -102,6 +104,31 @@ builder.Services.AddSwaggerGen(c =>
         Title = "ExpenseTracker API",
         Version = "v1"
     });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Enter: Bearer {your token}"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 
 builder.Services.AddScoped<ExpenseTracker.Api.Services.WorkspaceContext>();
@@ -109,19 +136,24 @@ builder.Services.AddHttpClient<ExpenseTracker.Api.Services.OpenAiReceiptService>
 
 var app = builder.Build();
 
+//
+// ?? FORCE CLEAN DATABASE (SAFE FOR SCHOOL PROJECT)
+//
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+
+    db.Database.EnsureDeleted();   // remove broken DB
+    db.Database.Migrate();        // recreate tables from migrations
 }
 
 //
-// Middleware order is IMPORTANT
+// ? Middleware order
 //
+app.UseCors("vite");
+
 app.UseSwagger();
 app.UseSwaggerUI();
-
-app.UseCors("vite");
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -129,7 +161,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 //
-// Render Port Binding
+// ? Render port binding
 //
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 app.Run($"http://0.0.0.0:{port}");
