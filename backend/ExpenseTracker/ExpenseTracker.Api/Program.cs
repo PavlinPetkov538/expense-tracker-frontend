@@ -132,4 +132,4 @@ app.MapControllers();
 // Render Port Binding
 //
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-app.Run();
+app.Run($"http://0.0.0.0:{port}");
