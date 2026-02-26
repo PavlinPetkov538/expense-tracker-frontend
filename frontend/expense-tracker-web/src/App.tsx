@@ -8,6 +8,7 @@ import SettingsPage from "./pages/SettingsPage";
 import TransactionsPage from "./pages/TransactionsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import TransactionsSearchPage from "./pages/TransactionsSearchPage";
+import AiPage from "./pages/AiPage";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="transactions" element={<TransactionsPage />} />
         <Route path="search" element={<TransactionsSearchPage />} />
         <Route path="categories" element={<CategoriesPage />} />
+        <Route path="ai" element={<AiPage />} />
         <Route path="settings" element={<SettingsPage />} />
       </Route>
     </Routes>
