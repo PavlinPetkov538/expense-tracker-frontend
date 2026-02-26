@@ -14,18 +14,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 //
-// ? CORS (Allow localhost + deployed frontend)
+// ? PRODUCTION CORS (VERY IMPORTANT)
 //
-builder.Services.AddCors(opt =>
+builder.Services.AddCors(options =>
 {
-    opt.AddPolicy("vite", p => p
-        .AllowAnyOrigin()
-        .AllowAnyHeader()
-        .AllowAnyMethod());
+    options.AddPolicy("vite", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "https://expense-tracker-frontend-six-rouge.vercel.app"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
 
 //
-// ? Database (SQLite)
+// Database
 //
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
@@ -33,7 +38,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 });
 
 //
-// ? Identity
+// Identity
 //
 builder.Services.AddIdentity<User, IdentityRole<Guid>>(opt =>
 {
@@ -43,9 +48,6 @@ builder.Services.AddIdentity<User, IdentityRole<Guid>>(opt =>
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 
-//
-// ? Stop redirect to /Account/Login (return 401/403 instead)
-//
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Events.OnRedirectToLogin = ctx =>
@@ -61,7 +63,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 //
-// ? JWT Options + Service
+// JWT
 //
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
@@ -83,7 +85,8 @@ builder.Services.AddAuthentication(options =>
         ValidateIssuerSigningKey = true,
         ValidIssuer = jwt.Issuer,
         ValidAudience = jwt.Audience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.Key)),
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(jwt.Key)),
         ClockSkew = TimeSpan.FromSeconds(30)
     };
 });
@@ -91,7 +94,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 
 //
-// ? Swagger + JWT Bearer Support
+// Swagger
 //
 builder.Services.AddSwaggerGen(c =>
 {
@@ -100,54 +103,18 @@ builder.Services.AddSwaggerGen(c =>
         Title = "ExpenseTracker API",
         Version = "v1"
     });
-
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Enter: Bearer {your token}"
-    });
-
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
 });
 
-//
-// ? WorkspaceContext + OpenAI receipt service
-//
 builder.Services.AddScoped<ExpenseTracker.Api.Services.WorkspaceContext>();
 builder.Services.AddHttpClient<ExpenseTracker.Api.Services.OpenAiReceiptService>();
 
 var app = builder.Build();
 
 //
-// ? Always enable Swagger (for school demo)
+// Middleware order is IMPORTANT
 //
 app.UseSwagger();
 app.UseSwaggerUI();
-
-//
-// Optional HTTPS redirect (Render handles HTTPS)
-//
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
 
 app.UseCors("vite");
 
@@ -157,7 +124,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 //
-// ? REQUIRED for Render (dynamic port binding)
+// Render Port Binding
 //
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-app.Run($"http://0.0.0.0:{port}");
+app.Run();
