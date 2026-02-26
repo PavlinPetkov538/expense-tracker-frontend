@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "ExpenseTracker.Api.Controllers.AiTransactionsController",
+    "Method": "FromReceipt",
+    "RelativePath": "api/ai/transactions/from-receipt",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "extraNote",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracker.Api.Controllers.AiTransactionsController",
+    "Method": "FromText",
+    "RelativePath": "api/ai/transactions/from-text",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ExpenseTracker.Api.Controllers.AiTransactionsController\u002BFromTextRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthenticationController",
     "Method": "Login",
     "RelativePath": "api/Authentication/login",
@@ -375,6 +412,95 @@
         "Name": "take",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracker.Api.Controllers.WorkspacesController",
+    "Method": "CreateWorkspace",
+    "RelativePath": "api/workspaces",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ExpenseTracker.Api.Controllers.WorkspacesController\u002BCreateWorkspaceRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracker.Api.Controllers.WorkspacesController",
+    "Method": "Invite",
+    "RelativePath": "api/workspaces/{workspaceId}/invite",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "workspaceId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "req",
+        "Type": "ExpenseTracker.Api.Controllers.WorkspacesController\u002BInviteRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracker.Api.Controllers.WorkspacesController",
+    "Method": "Accept",
+    "RelativePath": "api/workspaces/accept",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ExpenseTracker.Api.Controllers.WorkspacesController\u002BAcceptRejectRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracker.Api.Controllers.WorkspacesController",
+    "Method": "MyInvites",
+    "RelativePath": "api/workspaces/invites",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracker.Api.Controllers.WorkspacesController",
+    "Method": "MyWorkspaces",
+    "RelativePath": "api/workspaces/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ExpenseTracker.Api.Controllers.WorkspacesController",
+    "Method": "Reject",
+    "RelativePath": "api/workspaces/reject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "ExpenseTracker.Api.Controllers.WorkspacesController\u002BAcceptRejectRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

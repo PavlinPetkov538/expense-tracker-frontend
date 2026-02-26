@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>273b03f3-b9d9-403a-b033-0b8bef2ab887</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,14 +13,28 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.13" />
-
+    <PackageReference Include="PdfPig" Version="0.1.13" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Tesseract" Version="5.2.0" />
+  </ItemGroup>
+
+  <!-- tessdata copy -->
+  <ItemGroup>
+    <Content Include="tessdata\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- Remove duplicated native dll references -->
+  <ItemGroup>
+    <None Remove="C:\Users\pavlin\.nuget\packages\tesseract\5.2.0\build\..\x64\leptonica-1.82.0.dll" />
+    <None Remove="C:\Users\pavlin\.nuget\packages\tesseract\5.2.0\build\..\x64\tesseract50.dll" />
+    <None Remove="C:\Users\pavlin\.nuget\packages\tesseract\5.2.0\build\..\x86\leptonica-1.82.0.dll" />
+    <None Remove="C:\Users\pavlin\.nuget\packages\tesseract\5.2.0\build\..\x86\tesseract50.dll" />
   </ItemGroup>
 
 </Project>

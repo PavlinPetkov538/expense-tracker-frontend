@@ -1,5 +1,5 @@
 ﻿using ExpenseTracker.Api.Data;
-using ExpenseTracker.Api.Data.Entities;
+using ExpenseTracker.Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +13,13 @@ namespace ExpenseTracker.Api.Controllers;
 public class TransactionsController : ControllerBase
 {
     private readonly AppDbContext _db;
-    public TransactionsController(AppDbContext db) => _db = db;
+    private readonly WorkspaceContext _wctx;
+
+    public TransactionsController(AppDbContext db, WorkspaceContext wctx)
+    {
+        _db = db;
+        _wctx = wctx;
+    }
 
     private Guid UserId
     {
@@ -24,6 +30,12 @@ public class TransactionsController : ControllerBase
                 throw new UnauthorizedAccessException("Invalid user id claim.");
             return id;
         }
+    }
+
+    private async Task<Guid> WorkspaceIdAsync()
+    {
+        var header = Request.Headers["X-Workspace-Id"].ToString();
+        return await _wctx.ResolveWorkspaceIdAsync(UserId, header);
     }
 
     public record TransactionDto(
@@ -57,11 +69,12 @@ public class TransactionsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] int take = 50)
     {
+        var workspaceId = await WorkspaceIdAsync();
         take = Math.Clamp(take, 1, 200);
 
         var items = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.UserId == UserId)
+            .Where(t => t.WorkspaceId == workspaceId)
             .Include(t => t.Category)
             .OrderByDescending(t => t.Date)
             .ThenByDescending(t => t.CreatedAt)
@@ -69,13 +82,13 @@ public class TransactionsController : ControllerBase
             .Select(t => new
             {
                 id = t.Id,
-                userId = t.UserId,
                 amount = t.Amount,
                 date = t.Date,
                 type = t.Type,
                 note = t.Note,
                 categoryId = t.CategoryId,
                 categoryName = t.Category != null ? t.Category.Name : null,
+                categoryColor = t.Category != null ? t.Category.Color : null,
                 createdAt = t.CreatedAt
             })
             .ToListAsync();
@@ -86,9 +99,11 @@ public class TransactionsController : ControllerBase
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<TransactionDto>> GetById(Guid id)
     {
+        var workspaceId = await WorkspaceIdAsync();
+
         var item = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.Id == id && t.UserId == UserId)
+            .Where(t => t.Id == id && t.WorkspaceId == workspaceId)
             .Include(t => t.Category)
             .Select(t => new TransactionDto(
                 t.Id,
@@ -109,35 +124,36 @@ public class TransactionsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<TransactionDto>> Create([FromBody] CreateTransactionRequest req)
     {
+        var workspaceId = await WorkspaceIdAsync();
+
         if (req.Amount <= 0) return BadRequest(new { error = "Amount must be > 0." });
-        if (req.Type < 0 || req.Type > 1) return BadRequest(new { error = "Invalid transaction type." });
+        if (req.Type is not (0 or 1)) return BadRequest(new { error = "Invalid transaction type." });
 
-        Guid? categoryId = req.CategoryId;
-
-        if (categoryId != null)
+        if (req.CategoryId != null)
         {
-            var catOk = await _db.Categories.AnyAsync(c => c.Id == categoryId && c.UserId == UserId);
+            var catOk = await _db.Categories.AnyAsync(c => c.Id == req.CategoryId && c.WorkspaceId == workspaceId);
             if (!catOk) return BadRequest(new { error = "Invalid category." });
         }
 
         var entity = new Transaction
         {
             UserId = UserId,
+            WorkspaceId = workspaceId,
+            CreatedByUserId = UserId,
             Amount = req.Amount,
             Date = req.Date.Date,
             Type = req.Type,
             Note = string.IsNullOrWhiteSpace(req.Note) ? null : req.Note.Trim(),
-            CategoryId = categoryId,
+            CategoryId = req.CategoryId,
             CreatedAt = DateTime.UtcNow
         };
 
         _db.Transactions.Add(entity);
         await _db.SaveChangesAsync();
 
-        // върни DTO с category инфо
         var created = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.Id == entity.Id && t.UserId == UserId)
+            .Where(t => t.Id == entity.Id && t.WorkspaceId == workspaceId)
             .Include(t => t.Category)
             .Select(t => new TransactionDto(
                 t.Id,
@@ -158,16 +174,18 @@ public class TransactionsController : ControllerBase
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<TransactionDto>> Update(Guid id, [FromBody] UpdateTransactionRequest req)
     {
+        var workspaceId = await WorkspaceIdAsync();
+
         if (req.Amount <= 0) return BadRequest(new { error = "Amount must be > 0." });
-        if (req.Type < 0 || req.Type > 1) return BadRequest(new { error = "Invalid transaction type." });
+        if (req.Type is not (0 or 1)) return BadRequest(new { error = "Invalid transaction type." });
 
         if (req.CategoryId != null)
         {
-            var catOk = await _db.Categories.AnyAsync(c => c.Id == req.CategoryId && c.UserId == UserId);
+            var catOk = await _db.Categories.AnyAsync(c => c.Id == req.CategoryId && c.WorkspaceId == workspaceId);
             if (!catOk) return BadRequest(new { error = "Invalid category." });
         }
 
-        var entity = await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && t.UserId == UserId);
+        var entity = await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && t.WorkspaceId == workspaceId);
         if (entity is null) return NotFound();
 
         entity.Amount = req.Amount;
@@ -180,7 +198,7 @@ public class TransactionsController : ControllerBase
 
         var dto = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.Id == id && t.UserId == UserId)
+            .Where(t => t.Id == id && t.WorkspaceId == workspaceId)
             .Include(t => t.Category)
             .Select(t => new TransactionDto(
                 t.Id,
@@ -201,7 +219,9 @@ public class TransactionsController : ControllerBase
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        var entity = await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && t.UserId == UserId);
+        var workspaceId = await WorkspaceIdAsync();
+
+        var entity = await _db.Transactions.FirstOrDefaultAsync(t => t.Id == id && t.WorkspaceId == workspaceId);
         if (entity is null) return NotFound();
 
         _db.Transactions.Remove(entity);
@@ -209,40 +229,37 @@ public class TransactionsController : ControllerBase
 
         return NoContent();
     }
+
     [HttpGet("search")]
     public async Task<IActionResult> Search(
-    [FromQuery] string? categoryName,
-    [FromQuery] DateTime? createdFrom,
-    [FromQuery] DateTime? createdTo,
-    [FromQuery] int take = 200
-)
+        [FromQuery] string? categoryName,
+        [FromQuery] DateTime? createdFrom,
+        [FromQuery] DateTime? createdTo,
+        [FromQuery] int take = 200
+    )
     {
+        var workspaceId = await WorkspaceIdAsync();
         take = Math.Clamp(take, 1, 500);
 
         var query = _db.Transactions
             .AsNoTracking()
-            .Where(t => t.UserId == UserId)
+            .Where(t => t.WorkspaceId == workspaceId)
             .Include(t => t.Category)
             .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(categoryName))
         {
             var term = categoryName.Trim();
-            query = query.Where(t =>
-                t.Category != null && EF.Functions.Like(t.Category.Name, $"%{term}%"));
+            query = query.Where(t => t.Category != null && EF.Functions.Like(t.Category.Name, $"%{term}%"));
         }
 
         if (createdFrom.HasValue)
-        {
-            var f = createdFrom.Value;
-            query = query.Where(t => t.CreatedAt >= f);
-        }
+            query = query.Where(t => t.CreatedAt >= createdFrom.Value);
 
         if (createdTo.HasValue)
         {
-            // inclusive to-date end of day
-            var t = createdTo.Value.Date.AddDays(1);
-            query = query.Where(x => x.CreatedAt < t);
+            var end = createdTo.Value.Date.AddDays(1);
+            query = query.Where(t => t.CreatedAt < end);
         }
 
         var items = await query
@@ -251,13 +268,13 @@ public class TransactionsController : ControllerBase
             .Select(t => new
             {
                 id = t.Id,
-                userId = t.UserId,
                 amount = t.Amount,
                 date = t.Date,
                 type = t.Type,
                 note = t.Note,
                 categoryId = t.CategoryId,
                 categoryName = t.Category != null ? t.Category.Name : null,
+                categoryColor = t.Category != null ? t.Category.Color : null,
                 createdAt = t.CreatedAt
             })
             .ToListAsync();

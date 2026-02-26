@@ -1,4 +1,5 @@
 ﻿using ExpenseTracker.Api.Data;
+using ExpenseTracker.Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,13 @@ namespace ExpenseTracker.Api.Controllers;
 public class ReportsController : ControllerBase
 {
     private readonly AppDbContext _db;
-    public ReportsController(AppDbContext db) => _db = db;
+    private readonly WorkspaceContext _wctx;
+
+    public ReportsController(AppDbContext db, WorkspaceContext wctx)
+    {
+        _db = db;
+        _wctx = wctx;
+    }
 
     private bool TryGetUserId(out Guid userId)
     {
@@ -21,29 +28,39 @@ public class ReportsController : ControllerBase
         return Guid.TryParse(raw, out userId);
     }
 
+    private async Task<Guid> WorkspaceIdAsync(Guid userId)
+    {
+        var header = Request.Headers["X-Workspace-Id"].ToString();
+        return await _wctx.ResolveWorkspaceIdAsync(userId, header);
+    }
+
     [HttpGet("summary")]
     public async Task<IActionResult> Summary([FromQuery] int year, [FromQuery] int month)
     {
         if (!TryGetUserId(out var userId)) return Unauthorized();
         if (month < 1 || month > 12) return BadRequest(new { error = "Invalid month" });
 
+        var workspaceId = await WorkspaceIdAsync(userId);
+
         var start = new DateTime(year, month, 1);
         var end = start.AddMonths(1);
 
-        var incomeList = await _db.Transactions
+        // SQLite: SUM върху decimal може да не се преведе.
+        // Решение: сумираме като double в SQL, после връщаме decimal.
+        var incomeD = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.UserId == userId && t.Date >= start && t.Date < end && t.Type == 1)
-            .Select(t => t.Amount)
-            .ToListAsync();
+            .Where(t => t.WorkspaceId == workspaceId && t.Date >= start && t.Date < end && t.Type == 1)
+            .Select(t => (double?)t.Amount)
+            .SumAsync() ?? 0.0;
 
-        var expenseList = await _db.Transactions
+        var expenseD = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.UserId == userId && t.Date >= start && t.Date < end && t.Type == 0)
-            .Select(t => t.Amount)
-            .ToListAsync();
+            .Where(t => t.WorkspaceId == workspaceId && t.Date >= start && t.Date < end && t.Type == 0)
+            .Select(t => (double?)t.Amount)
+            .SumAsync() ?? 0.0;
 
-        var income = incomeList.Sum();
-        var expense = expenseList.Sum();
+        var income = (decimal)incomeD;
+        var expense = (decimal)expenseD;
 
         return Ok(new { income, expense, balance = income - expense });
     }
@@ -51,18 +68,19 @@ public class ReportsController : ControllerBase
     [HttpGet("by-category")]
     public async Task<IActionResult> ByCategory([FromQuery] int year, [FromQuery] int month, [FromQuery] int type = 0)
     {
-        // type: 0 = Expense, 1 = Income
         if (!TryGetUserId(out var userId)) return Unauthorized();
         if (month < 1 || month > 12) return BadRequest(new { error = "Invalid month" });
         if (type is not (0 or 1)) return BadRequest(new { error = "Invalid type" });
 
+        var workspaceId = await WorkspaceIdAsync(userId);
+
         var start = new DateTime(year, month, 1);
         var end = start.AddMonths(1);
 
-        // IMPORTANT: SQLite + decimal Sum => правим групиране в C#
+        // SQLite decimal sum grouping: do it in C#
         var rows = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.UserId == userId && t.Date >= start && t.Date < end && t.Type == type)
+            .Where(t => t.WorkspaceId == workspaceId && t.Date >= start && t.Date < end && t.Type == type)
             .Include(t => t.Category)
             .Select(t => new
             {
@@ -88,18 +106,18 @@ public class ReportsController : ControllerBase
         return Ok(result);
     }
 
-
     [HttpGet("recent")]
     public async Task<IActionResult> Recent([FromQuery] int take = 10)
     {
         if (!TryGetUserId(out var userId)) return Unauthorized();
-        take = Math.Clamp(take, 1, 50);
+        var workspaceId = await WorkspaceIdAsync(userId);
 
+        take = Math.Clamp(take, 1, 50);
         var since = DateTime.UtcNow.AddDays(-1);
 
         var items = await _db.Transactions
             .AsNoTracking()
-            .Where(t => t.UserId == userId && t.CreatedAt >= since)
+            .Where(t => t.WorkspaceId == workspaceId && t.CreatedAt >= since)
             .Include(t => t.Category)
             .OrderByDescending(t => t.CreatedAt)
             .Take(take)

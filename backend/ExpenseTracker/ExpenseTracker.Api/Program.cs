@@ -13,22 +13,28 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-// CORS (Vite)
+//
+// ? CORS (Allow localhost + deployed frontend)
+//
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("vite", p => p
-        .WithOrigins("http://localhost:5173")
+        .AllowAnyOrigin()
         .AllowAnyHeader()
         .AllowAnyMethod());
 });
 
-// DB
+//
+// ? Database (SQLite)
+//
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("Default"));
 });
 
-// Identity
+//
+// ? Identity
+//
 builder.Services.AddIdentity<User, IdentityRole<Guid>>(opt =>
 {
     opt.Password.RequiredLength = 6;
@@ -37,7 +43,9 @@ builder.Services.AddIdentity<User, IdentityRole<Guid>>(opt =>
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
 
-// IMPORTANT: ?? API ?? ???? redirect ??? /Account/Login, ? 401/403
+//
+// ? Stop redirect to /Account/Login (return 401/403 instead)
+//
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Events.OnRedirectToLogin = ctx =>
@@ -52,12 +60,14 @@ builder.Services.ConfigureApplicationCookie(options =>
     };
 });
 
-// JWT options + service
+//
+// ? JWT Options + Service
+//
 builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
-// Auth (JWT) - ??????? JWT default scheme
 var jwt = builder.Configuration.GetSection("Jwt").Get<JwtOptions>()!;
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -80,10 +90,16 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-// Swagger + Bearer button
+//
+// ? Swagger + JWT Bearer Support
+//
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ExpenseTracker API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "ExpenseTracker API",
+        Version = "v1"
+    });
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -111,15 +127,23 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+//
+// ? WorkspaceContext + OpenAI receipt service
+//
+builder.Services.AddScoped<ExpenseTracker.Api.Services.WorkspaceContext>();
+builder.Services.AddHttpClient<ExpenseTracker.Api.Services.OpenAiReceiptService>();
+
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//
+// ? Always enable Swagger (for school demo)
+//
+app.UseSwagger();
+app.UseSwaggerUI();
 
-// ?? dev ? ??-????? ??? https ???????? (?? proxy)
+//
+// Optional HTTPS redirect (Render handles HTTPS)
+//
 if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
@@ -132,4 +156,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+//
+// ? REQUIRED for Render (dynamic port binding)
+//
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Run($"http://0.0.0.0:{port}");

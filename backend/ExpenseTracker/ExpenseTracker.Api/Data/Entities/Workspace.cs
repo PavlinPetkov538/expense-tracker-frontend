@@ -10,5 +10,6 @@ public class Workspace
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    public ICollection<WorkspaceMember> Members { get; set; } = new List<WorkspaceMember>();
+    public ICollection<ExpenseTracker.Api.Data.Entities.WorkspaceMember> Members { get; set; }
+    = new List<ExpenseTracker.Api.Data.Entities.WorkspaceMember>();
 }
