@@ -20,10 +20,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("vite", policy =>
     {
-        policy.WithOrigins(
-                "http://localhost:5173",
-                "https://expense-tracker-frontend-six-rouge.vercel.app"
-            )
+        policy.SetIsOriginAllowed(origin =>
+                origin.StartsWith("http://localhost") ||
+                origin.Contains("vercel.app"))
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
